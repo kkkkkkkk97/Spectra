@@ -1,0 +1,136 @@
+{
+  "mode": "client",
+  "target": "OpenSSL",
+  "target_version": "3.4.0",
+  "properties_tested": [
+    "C1",
+    "C4",
+    "C11",
+    "C12",
+    "C13",
+    "C16",
+    "C17",
+    "C18",
+    "C19"
+  ],
+  "timestamp": "2026-01-02T23:20:25.466935",
+  "summary": {
+    "total": 9,
+    "passed": 9,
+    "failed": 0,
+    "timeout": 0,
+    "skipped": 0,
+    "error": 0
+  },
+  "total_duration": 9.9,
+  "results": [
+    {
+      "property_id": "C1",
+      "test_name": "test_property_C1",
+      "target": "OpenSSL",
+      "target_version": "3.4.0",
+      "status": "passed",
+      "duration": 0.565,
+      "timestamp": "2026-01-02T23:20:15.564446",
+      "output": "ChangeCipherSpec start: ['unexpected_message']\nCertificate start: ['unexpected_message']\nCertificateVerify start: ['unexpected_message']\nFinish start: ['NoResponse']\nApplicationData start: ['unexpected_message']",
+      "error_message": null,
+      "traceback": null
+    },
+    {
+      "property_id": "C11",
+      "test_name": "test_property_C11",
+      "target": "OpenSSL",
+      "target_version": "3.4.0",
+      "status": "passed",
+      "duration": 1.917,
+      "timestamp": "2026-01-02T23:20:16.129405",
+      "output": "Cert->CCS->Finish: ['ServerHello-ChangeCipherSpec-EncryptedExtensions-Certificate-CertificateVerify-Finished', 'unexpected_message', 'None', 'None']\nCert->Finish: ['ServerHello-ChangeCipherSpec-EncryptedExtensions-Certificate-CertificateVerify-Finished', 'unexpected_message', 'None']\nCert->Cert->Finish: ['ServerHello-ChangeCipherSpec-EncryptedExtensions-Certificate-CertificateVerify-Finished', 'unexpected_message', 'None', 'None']",
+      "error_message": null,
+      "traceback": null
+    },
+    {
+      "property_id": "C12",
+      "test_name": "test_property_C12",
+      "target": "OpenSSL",
+      "target_version": "3.4.0",
+      "status": "passed",
+      "duration": 1.253,
+      "timestamp": "2026-01-02T23:20:18.046436",
+      "output": "CertV->CCS->Finish: ['ServerHello-ChangeCipherSpec-EncryptedExtensions-Certificate-CertificateVerify-Finished', 'unexpected_message', 'None', 'None', 'None']\nCertV->Cert->Finish: ['ServerHello-ChangeCipherSpec-EncryptedExtensions-Certificate-CertificateVerify-Finished', 'unexpected_message', 'None', 'None', 'None']",
+      "error_message": null,
+      "traceback": null
+    },
+    {
+      "property_id": "C13",
+      "test_name": "test_property_C13",
+      "target": "OpenSSL",
+      "target_version": "3.4.0",
+      "status": "passed",
+      "duration": 1.131,
+      "timestamp": "2026-01-02T23:20:19.300360",
+      "output": "ClientHello->Finish (no cert): ['ServerHello-ChangeCipherSpec-EncryptedExtensions-Certificate-CertificateVerify-Finished', 'NewSessionTicket-NewSessionTicket']",
+      "error_message": null,
+      "traceback": null
+    },
+    {
+      "property_id": "C16",
+      "test_name": "test_property_C16",
+      "target": "OpenSSL",
+      "target_version": "3.4.0",
+      "status": "passed",
+      "duration": 1.864,
+      "timestamp": "2026-01-02T23:20:20.431772",
+      "output": "CH->AppData: ['ServerHello-ChangeCipherSpec-EncryptedExtensions-Certificate-CertificateVerify-Finished', 'unexpected_message']\nCH->Cert->AppData: ['ServerHello-ChangeCipherSpec-EncryptedExtensions-Certificate-CertificateVerify-Finished', 'unexpected_message', 'None']\nCH->Cert->CertV->AppData: ['ServerHello-ChangeCipherSpec-EncryptedExtensions-Certificate-CertificateVerify-Finished', 'unexpected_message', 'None', 'None']",
+      "error_message": null,
+      "traceback": null
+    },
+    {
+      "property_id": "C17",
+      "test_name": "test_property_C17",
+      "target": "OpenSSL",
+      "target_version": "3.4.0",
+      "status": "passed",
+      "duration": 0.631,
+      "timestamp": "2026-01-02T23:20:22.295890",
+      "output": "Wrong legacy_version (3,2): ['ServerHello-ChangeCipherSpec-EncryptedExtensions-Certificate-CertificateVerify-Finished']",
+      "error_message": null,
+      "traceback": null
+    },
+    {
+      "property_id": "C18",
+      "test_name": "test_property_C18",
+      "target": "OpenSSL",
+      "target_version": "3.4.0",
+      "status": "passed",
+      "duration": 0.106,
+      "timestamp": "2026-01-02T23:20:22.927312",
+      "output": "Invalid KeyShare: ['illegal_parameter']",
+      "error_message": null,
+      "traceback": null
+    },
+    {
+      "property_id": "C19",
+      "test_name": "test_property_C19",
+      "target": "OpenSSL",
+      "target_version": "3.4.0",
+      "status": "passed",
+      "duration": 0.106,
+      "timestamp": "2026-01-02T23:20:23.033199",
+      "output": "compression_methods=[1]: ['decode_error']",
+      "error_message": null,
+      "traceback": null
+    },
+    {
+      "property_id": "C4",
+      "test_name": "test_property_C4",
+      "target": "OpenSSL",
+      "target_version": "3.4.0",
+      "status": "passed",
+      "duration": 2.326,
+      "timestamp": "2026-01-02T23:20:23.139904",
+      "output": "CHEmptyKeyShare -> CHEmptyKeyShare: ['ServerHelloRetryRequest-ChangeCipherSpec', 'illegal_parameter']\nCHEmptyKeyShare -> ChangeCipherSpec: ['ServerHelloRetryRequest-ChangeCipherSpec', 'NoResponse']\nCHEmptyKeyShare -> Certificate: ['ServerHelloRetryRequest-ChangeCipherSpec', 'unexpected_message']",
+      "error_message": null,
+      "traceback": null
+    }
+  ]
+}
