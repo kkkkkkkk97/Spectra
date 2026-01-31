@@ -1,0 +1,20 @@
+================================================================================
+VIOLATION TEST CASE
+================================================================================
+
+Violated Properties:
+  - C6: EE后是CRq或SCert
+
+Message Sequence:
+  CH(legacy_version=0x303, KeyShareY=2, prime=4, comp_method=0) -> SH -> EE -> CF -> App -> App
+
+Message Trace (detailed):
+--------------------------------------------------------------------------------
+  [0] CH(legacy_version=0x303, KeyShareY=2, prime=4, comp_method=0) (ClientHello, from cl)
+  [1] SH                             (ServerHello, from sr)
+  [2] EE                             (EncryptedExtensions, from sr)
+  [3] CF                             (ClientFinished, from cl)
+  [4] App                            (ApplicationData, from sr)
+  [5] App                            (ApplicationData, from cl)
+--------------------------------------------------------------------------------
+================================================================================

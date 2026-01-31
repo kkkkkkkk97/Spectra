@@ -1,0 +1,24 @@
+================================================================================
+VIOLATION TEST CASE
+================================================================================
+
+Violated Properties:
+  - C4: HRR后必须是CH
+
+Message Sequence:
+  CH(legacy_version=0x303, KeyShareY=2, prime=4, comp_method=0) -> HRR -> CCV -> CF -> EE -> CRq -> SCert(non-empty) -> SCV -> SF -> CCert(non-empty)
+
+Message Trace (detailed):
+--------------------------------------------------------------------------------
+  [0] CH(legacy_version=0x303, KeyShareY=2, prime=4, comp_method=0) (ClientHello, from cl)
+  [1] HRR                            (HelloRetryRequest, from sr)
+  [2] CCV                            (ClientCertificateVerify, from cl)
+  [3] CF                             (ClientFinished, from cl)
+  [4] EE                             (EncryptedExtensions, from sr)
+  [5] CRq                            (CertificateRequest, from sr)
+  [6] SCert(non-empty)               (ServerCertificate, from sr)
+  [7] SCV                            (ServerCertificateVerify, from sr)
+  [8] SF                             (ServerFinished, from sr)
+  [9] CCert(non-empty)               (ClientCertificate, from cl)
+--------------------------------------------------------------------------------
+================================================================================

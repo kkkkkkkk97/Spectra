@@ -1,0 +1,20 @@
+================================================================================
+VIOLATION TEST CASE
+================================================================================
+
+Violated Properties:
+  - C17: ClientHello的legacy_version必须为0x0303
+
+Message Sequence:
+  CH(legacy_version=0x304, KeyShareY=2, prime=4, comp_method=0) -> SH -> EE -> SCert(non-empty) -> SCV -> SF
+
+Message Trace (detailed):
+--------------------------------------------------------------------------------
+  [0] CH(legacy_version=0x304, KeyShareY=2, prime=4, comp_method=0) (ClientHello, from cl)
+  [1] SH                             (ServerHello, from sr)
+  [2] EE                             (EncryptedExtensions, from sr)
+  [3] SCert(non-empty)               (ServerCertificate, from sr)
+  [4] SCV                            (ServerCertificateVerify, from sr)
+  [5] SF                             (ServerFinished, from sr)
+--------------------------------------------------------------------------------
+================================================================================
