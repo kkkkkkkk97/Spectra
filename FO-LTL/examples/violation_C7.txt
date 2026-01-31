@@ -1,0 +1,21 @@
+================================================================================
+VIOLATION TEST CASE
+================================================================================
+
+Violated Properties:
+  - C7: CRq后必须是SCert
+
+Message Sequence:
+  CH(legacy_version=0x303, KeyShareY=2, prime=4, comp_method=0) -> SH -> EE -> CRq -> CCert(non-empty) -> CCV -> CF
+
+Message Trace (detailed):
+--------------------------------------------------------------------------------
+  [0] CH(legacy_version=0x303, KeyShareY=2, prime=4, comp_method=0) (ClientHello, from cl)
+  [1] SH                             (ServerHello, from sr)
+  [2] EE                             (EncryptedExtensions, from sr)
+  [3] CRq                            (CertificateRequest, from sr)
+  [4] CCert(non-empty)               (ClientCertificate, from cl)
+  [5] CCV                            (ClientCertificateVerify, from cl)
+  [6] CF                             (ClientFinished, from cl)
+--------------------------------------------------------------------------------
+================================================================================

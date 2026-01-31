@@ -1,0 +1,70 @@
+
+为系统化地将 FO-LTL$_f$ 公式映射为 SMT 约束，
+我们定义一组标准翻译模式 $\mathcal{T}$，
+将常见的时序结构转换为无量词的一阶逻辑公式。
+
+\paragraph{1. 严格序列约束}
+对于形如 $\Box(P \rightarrow \bigcirc Q)$ 的约束，
+其语义要求一旦 $P$ 在某一时间步成立，
+则 $Q$ 必须在紧随其后的下一时间步成立。
+该约束被编码为：
+\begin{equation}
+   \mathcal{T}_{\text{seq}}(P, Q) =
+\bigwedge_{t=0}^{k-2}
+\left(
+(t < N \land P(\sigma_t))
+\;\Rightarrow\;
+(t+1 < N \land Q(\sigma_{t+1}))
+\right).\nonumber 
+\end{equation}
+
+
+\paragraph{2. 最终响应约束}
+对于形如 $\Box(P \rightarrow \Diamond Q)$ 的约束，
+表示若 $P$ 在某一时刻成立，
+则 $Q$ 必须在该时刻之后的某一未来时间步成立。
+其编码为：
+\begin{equation}
+\mathcal{T}_{\text{resp}}(P, Q) = 
+\bigwedge_{t=0}^{k-1}
+\left(
+(t < N \land P(\sigma_t))
+\;\Rightarrow\;
+\bigvee_{j=t}^{k-1} (j < N \land Q(\sigma_j))
+\right).\nonumber
+\end{equation}
+
+\paragraph{3. 历史依赖约束}
+对于需要表达“$Q$ 的发生必须以 $P$ 已经发生为前提”的历史依赖关系，
+我们采用如下编码：
+\begin{equation}
+\mathcal{T}_{\text{hist}}(Q, P) =
+\bigwedge_{t=0}^{k-1}
+\left(
+(t < N \land Q(\sigma_t))
+\;\Rightarrow\;
+\bigvee_{j=0}^{t-1} (j < N \land P(\sigma_j))
+\right).\nonumber
+\end{equation}
+
+\paragraph{4. 基数约束}
+对于限制事件出现次数的约束（如“最多发生 $\theta$ 次”），
+我们使用如下基数编码：
+\[
+\mathcal{T}_{\text{count}}(P, \theta) =
+\sum_{t=0}^{k-1} \mathbb{I}[t < N \land P(\sigma_t)] \le \theta,
+\]
+其中 $\mathbb{I}[\cdot]$ 为指示函数。
+
+\paragraph{5. 数据字段不变式}
+对于与具体消息类型相关的数据约束，
+我们在对应时间步上施加字段不变式：
+\begin{equation}
+\mathcal{T}_{\text{data}}(\tau, \Psi) = 
+\bigwedge_{t=0}^{k-1}
+\left(
+(t < N \land \sigma_t.\texttt{type} = \tau)
+\;\Rightarrow\;
+\Psi(\sigma_t.\texttt{fields})
+\right).\nonumber
+\end{equation}

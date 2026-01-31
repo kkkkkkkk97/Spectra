@@ -1,0 +1,24 @@
+================================================================================
+VIOLATION TEST CASE
+================================================================================
+
+Violated Properties:
+  - C9: SCV后必须是SF
+
+Message Sequence:
+  CH(legacy_version=0x303, KeyShareY=2, prime=4, comp_method=0) -> HRR -> CH(legacy_version=0x303, KeyShareY=2, prime=4, comp_method=0) -> SH -> EE -> SCert(non-empty) -> SCV -> CF -> SF -> CCert(non-empty)
+
+Message Trace (detailed):
+--------------------------------------------------------------------------------
+  [0] CH(legacy_version=0x303, KeyShareY=2, prime=4, comp_method=0) (ClientHello, from cl)
+  [1] HRR                            (HelloRetryRequest, from sr)
+  [2] CH(legacy_version=0x303, KeyShareY=2, prime=4, comp_method=0) (ClientHello, from cl)
+  [3] SH                             (ServerHello, from sr)
+  [4] EE                             (EncryptedExtensions, from sr)
+  [5] SCert(non-empty)               (ServerCertificate, from sr)
+  [6] SCV                            (ServerCertificateVerify, from sr)
+  [7] CF                             (ClientFinished, from cl)
+  [8] SF                             (ServerFinished, from sr)
+  [9] CCert(non-empty)               (ClientCertificate, from cl)
+--------------------------------------------------------------------------------
+================================================================================
